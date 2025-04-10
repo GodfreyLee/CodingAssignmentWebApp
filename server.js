@@ -6,7 +6,7 @@ const indexRouter = require("./src/routes/index");
 const app = express();
 
 // MongoDB connection
-const mongoDB = process.env.MONGODB_URI || "mongodb://localhost:27017/local-lib";
+const mongoDB = process.env.MONGODB_URI || "mongodb://localhost:27017/garage";
 
 main().catch((err) => console.log(err));
 
@@ -14,9 +14,9 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// // Middleware
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   console.log(`Received request for route: ${req.originalUrl}`);
